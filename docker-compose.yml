@@ -1,0 +1,24 @@
+services:
+  authservice:
+    build:
+      context: ./AuthService
+    ports:
+      - "5094:5094"
+    environment:
+      - ASPNETCORE_URLS=http://+:5094
+
+  userservice:
+    build:
+      context: ./UserService
+    ports:
+      - "5272:5272"
+    environment:
+      - ASPNETCORE_URLS=http://+:5272
+
+  apigateway:
+    build:
+      context: ./ApiGateway
+    ports:
+      - "5013:5013"
+    environment:
+      - ASPNETCORE_URLS=http://+:5013
